@@ -1,0 +1,3 @@
+﻿  test12.cpp
+C:\choi.mj\baekjoon\C++\re_function\test12\test12\test12.cpp(21,1): warning C4717: 'print_set': 모든 제어 경로에서 재귀적입니다. 함수로 인해 런타임 스택 오버플로가 발생합니다.
+C:\choi.mj\baekjoon\C++\re_function\test12\test12\test12.cpp(21,1): error C4716: 'print_set': 값을 반환해야 합니다.
