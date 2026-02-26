@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 
 int count = 0;
@@ -31,7 +31,7 @@ int main() {
 		hanoi(num, 1, 3, 2);
 	}
 	else {
-		long long count = (1LL << num) - 1;
+		unsigned long long count = (1LL << num) - 1;
 		std::cout << count << "\n";
 
 		return 0;

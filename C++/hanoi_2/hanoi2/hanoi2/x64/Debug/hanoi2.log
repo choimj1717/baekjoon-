@@ -1,2 +1,2 @@
 ﻿  hanoi2.cpp
-  hanoi2.vcxproj -> C:\choi.mj\baekjoon\C++\hanoi_2\hanoi2\x64\Debug\hanoi2.exe
+C:\choi.mj\baekjoon\C++\hanoi_2\hanoi2\hanoi2\hanoi2.cpp(3,10): error C1083: 포함 파일을 열 수 없습니다. 'boost/multiprecision/cpp_int.hpp': No such file or directory
