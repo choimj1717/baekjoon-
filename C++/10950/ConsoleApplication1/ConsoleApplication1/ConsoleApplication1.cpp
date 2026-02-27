@@ -248,3 +248,148 @@
 //    cout << mn << " " << mx << "\n";
 //    return 0;
 //}
+
+// 백준 2562번 문제 풀이
+
+//#include <iostream>
+//
+//int main() {
+//	int arr[10000];
+//	int temp;
+//	int max = 0;
+//	int adress = 0;
+//
+//	for (int i = 0; i < 10; i++) {
+//		std::cin >> temp;
+//		arr[i] = temp;
+//	}
+//
+//	for (int i = 0; i < 10; i++) {
+//		if (arr[i] > max) {
+//			max = arr[i];
+//			adress = i + 1;
+//		}
+//	}
+//
+//	std::cout << max << std::endl;
+//	std::cout << adress << std::endl;
+//
+//	return 0;
+//}
+
+//#include <iostream>
+//#include <cstring>
+//
+//int main() {
+//	int arr[10000];
+//	std::string num = "";
+//	float temp = 0;
+//
+//	std::cin >> num;
+//	
+//
+//	temp = temp / num;
+//
+//	std::cout << temp << std::endl;
+//}
+
+// 2720 문제 풀이
+
+//#include <iostream>
+//
+//int main() {
+//	int num;
+//	int arr[10000];
+//	int money[4];
+//	int temp = 0;
+//
+//	std::cin >> num;
+//	
+//	for(int i = 0; i < num; i++) {
+//		std::cin >> arr[i];
+//	}
+//
+//	for (int i = 0; i < num; i++) {
+//
+//		temp = arr[i] / 25;
+//		money[0] = temp;
+//
+//		temp = (arr[i] % 25) / 10;
+//		money[1] = temp;
+//
+//		temp = ((arr[i] % 25) % 10) / 5;
+//		money[2] = temp;
+//
+//		temp = ((arr[i] % 25) % 10) % 5;
+//		money[3] = temp;
+//
+//
+//		std::cout << money[0] << " " << money[1] << " " << money[2] << " " << money[3] << std::endl;
+//		temp = 0;
+//		money[0] = 0; money[1] = 0; money[2] = 0; money[3] = 0;
+//	}
+//
+//	return 0;
+//}
+
+//#include <iostream>
+//
+//int main() {
+//	int num;
+//	int first = 0; int second = 0;
+//	int sel[1000];
+//	int k = 0;
+//
+//	std::cin >> num;
+//
+//	for(int i = 0; i < num * 2; i+=2) {
+//		std::cin >> first >> second;
+//		sel[i] = first;  sel[i + 1] = second;
+//	}
+//
+//	for(int i = 0; i < num * 2; i+=2) {
+//		std::cout << "Case #" << k+1 << ": " << sel[i] << " + " << sel[i + 1] << " = " << sel[i] + sel[i + 1] << std::endl;
+//		k++;
+//	}
+//
+//	return 0;
+//}
+
+// 109510번 문제 풀이
+
+//#include <iostream>
+//
+//int main() {
+//	int num = 0;
+//	int first, second;
+//	int sel[1000];
+//
+//	while (std::cin >> first >> second) {
+//		sel[num] = first + second;
+//		num ++;
+//	}
+//
+//	for(int i=0; i < num; i++) {
+//		std::cout << sel[i] << std::endl;
+//	}
+//	return 0;
+//}
+
+#include <iostream>
+
+int main() {
+	int num, number;
+	int alpha = 0;
+	int arr[10000];
+
+	std::cin >> num;
+
+	for(int i = 0; i < num; i++) {
+		std::cin >> alpha;
+		arr[i] = alpha;
+	}
+
+	std::cin >> number;
+	
+
+}
