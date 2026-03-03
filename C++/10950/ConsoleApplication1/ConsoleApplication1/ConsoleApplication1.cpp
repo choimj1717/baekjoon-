@@ -375,21 +375,224 @@
 //	return 0;
 //}
 
+// 10952번 문제 풀이
+
+//#include <iostream>
+//
+//int main() {
+//	int num, number;
+//	int alpha = 0;
+//	int arr[10000];
+//
+//	std::cin >> num;
+//
+//	for(int i = 0; i < num; i++) {
+//		std::cin >> alpha;
+//		arr[i] = alpha;
+//	}
+//
+//	std::cin >> number;
+//	
+//
+//}
+
+// 최대값 최소값을 찾아 두 값을 곱해 원래 수를 구함.
+
+//#include <iostream>
+//
+//int main() {
+//
+//    int div_num = 0; // 약수 갯수
+//    int divisors[51] = { 0 }; // 약수들
+//    long long N = 0; // 구하려는 N
+//    int i = 0; // 반복 인덱스
+//    int min, max; // 약수들 중 최대값, 최소값 저장
+//
+//    std::cin >> div_num;
+//
+//    for (i = 0; i < div_num; i++) {
+//        std::cin >>divisors[i];
+//    }
+//
+//    switch (div_num)
+//    {
+//    case 0:
+//        break;
+//
+//    case 1:
+//        N = divisors[0] * divisors[0];
+//        std::cout << N;
+//        break;
+//
+//    default:
+//        min = max = divisors[0];
+//
+//        for (int i = 0; i < div_num - 1; i++) {
+//            if (min > divisors[i + 1]) {
+//                min = divisors[i + 1];
+//            }
+//        }
+//
+//        for (int i = 0; i < div_num - 1; i++) {
+//            if (max < divisors[i + 1]) {
+//                max = divisors[i + 1];
+//            }
+//        }
+//
+//        N = min * max;
+//        std::cout << N;
+//        break;
+//    }
+//
+//    return 0;
+//
+//}
+
+
+//#include <iostream>
+//
+//int first = 0, second = 0;
+//
+//int fibonacci(int n) {
+//
+//    if (n == 0) {
+//        first += 1;
+//        return 0;
+//    }
+//    else if (n == 1) {
+//        second += 1;
+//        return 1;
+//    }
+//    else {
+//        return fibonacci(n-1) + fibonacci(n-2);
+//    }
+//}
+//
+//int main() {
+//	int num;
+//	int select[50];
+//
+//	std::cin >> num;
+//
+//    for (int i = 0; i < num; i++) {
+//        std::cin >> select[i];
+//        fibonacci(select[i]);
+//		std::cout << first << " " << second << std::endl;
+//		first = 0; second = 0;
+//    }
+//
+//	return 0;
+//}
+
+
+
+//#include <iostream>
+//using namespace std;
+//
+//int main() {
+//	int T;	// 테스트 케이스의 개수
+//	int N;	// 각 테스트 케이스, fibonacci(N)
+//
+//	int fibonacci[42][2];
+//
+//	fibonacci[0][0] = 1;
+//	fibonacci[0][1] = 0;
+//
+//	fibonacci[1][0] = 0;
+//	fibonacci[1][1] = 1;
+//
+//
+//	for (int i = 2; i < 42; ++i)
+//	{
+//		fibonacci[i][0] = fibonacci[i - 1][0] + fibonacci[i - 2][0];
+//		fibonacci[i][1] = fibonacci[i - 1][1] + fibonacci[i - 2][1];
+//	}
+//
+//	cin >> T;
+//	for (int i = 0; i < T; i++) {
+//		cin >> N;
+//		cout << fibonacci[N][0] << " " << fibonacci[N][1] << endl;
+//	}
+//
+//	return 0;
+//}
+//
+
+//#include <iostream>
+//
+//int main() {
+//	int num[30];
+//	int min_1 = 0, min_2 = 0;
+//
+//	for(int i = 0; i < 28; i++) {
+//		std::cin >> num[i];
+//	}
+//
+//	min_1 = num[0]; min_2 = num[0];
+//
+//	for(int i = 0; i < 28; i++) {
+//		if (num[i] < min_1) {
+//			min_1 = num[i];
+//		}
+//		if (num[i] < min_2 && min_1 != min_2) {
+//			min_2 = num[i];
+//		}
+//
+//	}
+//
+//	std::cout << min_1 << std::endl;
+//	std::cout << min_2 << std::endl;
+//
+//	return 0;
+//}
+
+
+// 백준 2630번 문제 풀이
+
 #include <iostream>
 
+int num;
+int white = 0, blue = 0;
+int arr[128][128];
+
+void  cut_paper(int x, int y, int size) {
+	if(size == 1) {
+		 if (arr[x][y] == 0) white += 1;
+		 else blue += 1;
+
+		 return;
+	}
+
+	int count0 = 0, count1 = 0;
+
+	for (int i = x; i < x + size; i++) {
+		for (int j = x; j < y + size; j++) {
+			if (arr[i][j] == 0) count0++;
+			else count1++;
+		}
+	}
+
+	if (count0 == size * size) white++; // 영역 내 색이 한 종류
+	else if (count1 == size * size) blue++; // 영역 내 색이 한 종류
+	else {
+		cut_paper(x, y, size / 2);
+		cut_paper(x, y + size / 2, size / 2);
+		cut_paper(x + size / 2, y, size / 2);
+		cut_paper(x + size / 2, y + size / 2, size / 2);
+	}
+}
+
 int main() {
-	int num, number;
-	int alpha = 0;
-	int arr[10000];
 
 	std::cin >> num;
 
-	for(int i = 0; i < num; i++) {
-		std::cin >> alpha;
-		arr[i] = alpha;
-	}
+	for (int i = 0; i < num; i++) for (int j = 0; j < num; j++) std::cin >> arr[i][j];
 
-	std::cin >> number;
-	
+	cut_paper(0, 0, num);
 
+	// 출력 부분
+	std::cout << white << std::endl;
+	std::cout << blue << std::endl;
+
+	return 0;
 }
