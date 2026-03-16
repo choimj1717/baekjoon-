@@ -551,46 +551,57 @@
 
 #include <iostream>
 
-int num;
-int white = 0, blue = 0;
-int arr[128][128];
+// 분할 정복 및 재귀 홤수 사용
 
-void  cut_paper(int x, int y, int size) {
-	if(size == 1) {
-		 if (arr[x][y] == 0) white += 1;
-		 else blue += 1;
+int num; // 입력밭을 행과 열의 개수
+int white = 0, blue = 0; // 흰색, 파란색을 담을 변수
+int arr[128][128]; // 0과 1로된 색종이를 담을 배열
 
-		 return;
+// num = size
+void  cut_paper(int y, int x, int size) {
+	if(size == 1) { // size == 1 즉 안 쪽 사각형 까지 탐색이 완료 됬다면 실행
+		 if (arr[y][x] == 0) white += 1; // 가장 안쪽의 사각형이 0이면 하얀색
+		 else blue += 1; // 1이면 파란색을 더하고
+
+		 return; // 끝냄
 	}
 
+	// 영역 내 색이 한 종류인지 확인
 	int count0 = 0, count1 = 0;
-
-	for (int i = x; i < x + size; i++) {
-		for (int j = x; j < y + size; j++) {
-			if (arr[i][j] == 0) count0++;
-			else count1++;
+	
+	for (int i = y; i < y + size; i++) { // 0 ~ size 만큼 순회
+		for (int j = x; j < x + size; j++) { // 행도 마찬가지로 순회
+			if (arr[i][j] == 0) count0++; // size의 배열이 0이면 증감
+			else count1++; // 아니면 (1이면) 증감
 		}
 	}
+	// 정사각형
 
-	if (count0 == size * size) white++; // 영역 내 색이 한 종류
+	// 정사각형의 사이즈와 가로 세로가 모두 0이면 즉 배열이 같으면 정사각형 부분이 있고 하양을 의미함으로 하양 증감 및 함수 실행 종료
+	if (count0 == size * size) white++; 
+
+	// 0이 아니라면 다른 수 1이 들어있기에 1을 비교하고 사이즈의 크기와 맞다면 파랑을 반환 및 함수 실행 종료
 	else if (count1 == size * size) blue++; // 영역 내 색이 한 종류
+
+	// 이것도 아니라면 아직 정사각형을 찾이 못한 것이기에 한 번 더 크기를 반으로 나누고 순회
 	else {
-		cut_paper(x, y, size / 2);
-		cut_paper(x, y + size / 2, size / 2);
-		cut_paper(x + size / 2, y, size / 2);
-		cut_paper(x + size / 2, y + size / 2, size / 2);
+		cut_paper(y, x, size / 2); // 왼쪽 상단
+		cut_paper(y, x + size / 2, size / 2); // 오른쪽 상단
+		cut_paper(y + size / 2, x, size / 2); // 왼족 하단
+		cut_paper(y + size / 2, x + size / 2, size / 2); // 오른쪽 하단
 	}
 }
 
 int main() {
-
+	// 배열에[ 값 입력 받기
 	std::cin >> num;
 
+	// 행과 열에 각각 숫자 입력 받기 위한 for문
 	for (int i = 0; i < num; i++) for (int j = 0; j < num; j++) std::cin >> arr[i][j];
 
-	cut_paper(0, 0, num);
+	cut_paper(0, 0, num); // 함수 실행 
 
-	// 출력 부분
+	// 하얀색, 파란색 출력
 	std::cout << white << std::endl;
 	std::cout << blue << std::endl;
 
